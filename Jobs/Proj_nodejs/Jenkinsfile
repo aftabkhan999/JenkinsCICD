@@ -11,6 +11,11 @@ pipeline {
                     credentialsId: 'nodejs-repo-creds',
                     url: 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/aftabkhan999/node-js-getting-started.git'
                 }
+                
+            }
+        }
+        stage('Build Node JS Project') {
+            steps {
                 sh """
                   ls -ltra
                   npm install
