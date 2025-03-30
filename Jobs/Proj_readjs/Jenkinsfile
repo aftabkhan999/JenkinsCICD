@@ -7,7 +7,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'nodejs-repo-creds', 
                                                  usernameVariable: 'GIT_USERNAME', 
                                                  passwordVariable: 'GIT_PASSWORD')]) {
-                git branch: 'main', 
+                git branch: 'feature/readjsProject', 
                     credentialsId: 'nodejs-repo-creds',
                     url: 'https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/aftabkhan999/node-todo-cicd.git'
                 }
