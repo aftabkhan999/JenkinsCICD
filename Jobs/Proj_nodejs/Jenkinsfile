@@ -13,15 +13,9 @@ pipeline {
                 }
                 sh """
                   ls -ltra
-                """
-            }
-        }
-        stage('build project') {
-            steps {
-                sh """
-                cd node-js-getting-started
-                npm install
-                npm start
+                  cd node-js-getting-started
+                  npm install
+                  npm start
                 """
             }
         }
