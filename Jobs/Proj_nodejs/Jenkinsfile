@@ -2,6 +2,20 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nodejs-repo-creds', 
+                                                 usernameVariable: 'GIT_USERNAME', 
+                                                 passwordVariable: 'GIT_PASSWORD')]) {
+                git branch: 'main', 
+                    credentialsId: 'nodejs-repo-creds',
+                    url: 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/aftabkhan999/node-js-getting-started.git'
+                }
+                sh """
+                  ls -ltra
+                """
+            }
+        }
         stage('Hello') {
             steps {
                 echo 'Hello, World!'
