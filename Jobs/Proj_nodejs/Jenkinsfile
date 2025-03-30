@@ -13,7 +13,6 @@ pipeline {
                 }
                 sh """
                   ls -ltra
-                  cd node-js-getting-started
                   npm install
                   npm start
                 """
