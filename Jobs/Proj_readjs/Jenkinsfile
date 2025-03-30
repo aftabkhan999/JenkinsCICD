@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nodejs-repo-creds', 
+                                                 usernameVariable: 'GIT_USERNAME', 
+                                                 passwordVariable: 'GIT_PASSWORD')]) {
+                git branch: "master", 
+                    credentialsId: 'nodejs-repo-creds',
+                    url: 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/aftabkhan999/node-todo-cicd.git'
+                }
+                
+            }
+        }
+        stage('Build Node to do app Project') {
+            steps {
+                sh """
+                  ls -ltra
+                  sudo apt install nodejs
+                  npm install
+                  node app.js
+                """
+            }
+        }
+    }
+}
