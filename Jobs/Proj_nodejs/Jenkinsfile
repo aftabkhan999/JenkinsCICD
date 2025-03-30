@@ -16,9 +16,13 @@ pipeline {
                 """
             }
         }
-        stage('Hello') {
+        stage('build project') {
             steps {
-                echo 'Hello, World!'
+                sh """
+                cd node-js-getting-started
+                npm install
+                npm start
+                """
             }
         }
     }
